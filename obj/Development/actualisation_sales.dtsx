@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/14/2024 2:38:36 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WX-OR6242046"
+  DTS:CreatorName="AD\QJMV3236"
+  DTS:DTSID="{F02D646F-3F4A-4029-AF19-B6A9CC63A6A6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{AC7EBF96-B612-4DD1-9492-BA9B43C22839}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\actualisation_sales"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{FCA67A8A-9879-40AA-AB4E-A8EE7AEA4BE9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="actualisation_sales"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\actualisation_sales\requête nouvelle ligne"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="requête nouvelle ligne"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT SalesOrderID, ModifiedDate, SalesOrderDetailId, OrderQty, ProductID, SpecialOfferID, UnitPrice, UnitPriceDiscount, LineTotal
+FROM [Sales].[SalesOrderDetail]
+where ModifiedDate=?</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping">"Parameter0:Input",{27389D5F-38A7-418F-9A2D-FE0F5A11E842};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\actualisation_sales\requête nouvelle ligne.Connections[OleDbConnection]"
+                  connectionManagerID="{ED8156CB-C180-407F-B381-F3081F1B58C4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WX-OR6242046\SQLEXPRESS]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[SalesOrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[SalesOrderDetailId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[SalesOrderDetailId]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[SalesOrderDetailId]"
+                      name="SalesOrderDetailId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[OrderQty]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[OrderQty]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[OrderQty]"
+                      name="OrderQty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[ProductID]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[SpecialOfferID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[SpecialOfferID]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[SpecialOfferID]"
+                      name="SpecialOfferID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[UnitPrice]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[UnitPriceDiscount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[UnitPriceDiscount]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[UnitPriceDiscount]"
+                      name="UnitPriceDiscount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[LineTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[LineTotal]"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].Columns[LineTotal]"
+                      name="LineTotal"
+                      precision="38"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[SalesOrderDetailId]"
+                      dataType="i4"
+                      name="SalesOrderDetailId" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[OrderQty]"
+                      dataType="i2"
+                      name="OrderQty" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[SpecialOfferID]"
+                      dataType="i4"
+                      name="SpecialOfferID" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[UnitPriceDiscount]"
+                      dataType="cy"
+                      name="UnitPriceDiscount" />
+                    <externalMetadataColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie de source OLE DB].ExternalColumns[LineTotal]"
+                      dataType="numeric"
+                      name="LineTotal"
+                      precision="38"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[SalesOrderID]"
+                      dataType="i4"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[SalesOrderDetailId]"
+                      dataType="i4"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[SalesOrderDetailId]"
+                      name="SalesOrderDetailId" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[OrderQty]"
+                      dataType="i2"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[OrderQty]"
+                      name="OrderQty" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[SpecialOfferID]"
+                      dataType="i4"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[SpecialOfferID]"
+                      name="SpecialOfferID" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[UnitPriceDiscount]"
+                      dataType="cy"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[UnitPriceDiscount]"
+                      name="UnitPriceDiscount" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[LineTotal]"
+                      dataType="numeric"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[LineTotal]"
+                      name="LineTotal"
+                      precision="38"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\actualisation_sales\requête nouvelle ligne.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="167,42"
+          Id="Package\actualisation_sales"
+          TopLeft="18.5,9.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\actualisation_sales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\actualisation_sales\requête nouvelle ligne"
+          TopLeft="52,31" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\actualisation_sales\requête nouvelle ligne">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

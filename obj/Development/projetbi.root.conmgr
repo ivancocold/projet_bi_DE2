@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="projetbi.root"
+  DTS:DTSID="{44F79BE8-D9D2-40BC-9A3A-C9FABAC311B5}"
+  DTS:CreationName="ODBC">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::ProjetbiRoot_ConnectionString]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=root;Dsn=projetbi;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

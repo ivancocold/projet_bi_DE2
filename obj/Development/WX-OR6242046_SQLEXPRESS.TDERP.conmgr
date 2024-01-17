@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="WX-OR6242046\SQLEXPRESS"
+  DTS:DTSID="{ED8156CB-C180-407F-B381-F3081F1B58C4}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::sqlserverdbname]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Name">@[$Project::sqlservername]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=WX-OR6242046\SQLEXPRESS;Initial Catalog=TDERP;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-bi_project-{ED8156CB-C180-407F-B381-F3081F1B58C4}WX-OR6242046\SQLEXPRESS.TDERP;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
